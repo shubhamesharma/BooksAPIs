@@ -2,11 +2,19 @@ const { Op } = require("sequelize");
 const db = require('../db');
 const { Photos } = require('../model/photos.model');
 
+async function getById(id) {
+    let photo = null
+    try {
+        photo = await Photos.findByPk(id);
+    } catch (e) {
+        console.error('id=>', id)
+    }
+    return photo;
+}
+
 async function get(query) {
     // const { id } = query;
-    // if (id) {
-    //     id['id'] = id
-    // }
+
     const photo = await Photos.findAll();
     //     {
     //     where: {
@@ -46,6 +54,7 @@ async function deleteAll() {
 }
 
 module.exports = {
+    getById,
     get,
     post,
     put,

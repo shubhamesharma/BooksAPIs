@@ -19,8 +19,15 @@ async function get(req, res) {
 
 }
 
-async function getById(req,res){
-    res.send('sending');
+async function getById(req, res) {
+    const { id } = req.params
+    // const { params: { id } } = req;
+    const response = await photoService.getById(id);
+    res.status(200);
+    res.send({
+        message: 'Fetched',
+        data: response,
+    });
 }
 
 async function create(req, res) {
