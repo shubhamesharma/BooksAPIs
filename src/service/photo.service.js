@@ -13,17 +13,8 @@ async function getById(id) {
 }
 
 async function get(query) {
-    // const { id } = query;
 
     const photo = await Photos.findAll();
-    //     {
-    //     where: {
-    //         [Op.or]: [
-    //             { id: id, },
-    //             { title: "shubham1", }
-    //         ]
-    //     }
-    // });
     return photo;
 }
 
